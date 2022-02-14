@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const Container = styled.div`
     display: grid;
     grid-template-columns: repeat(3, 1fr); // Qnty. Colunas, Tamanho entre elas
-    gap: 2rem; //Espaçament ode cada um dos itens do grid
+    gap: 2rem; //Espaçamento de cada um dos itens do grid
 
     margin-top: -10rem;
 
