@@ -66,7 +66,7 @@ export const TransactionTypeContainer = styled.div`
 
 export const TransactionTypeButton = styled.button<TransactionTypeButtonProps>`
     background-color: ${({ isActive, buttonColor }) =>
-        isActive ? transparentize(0.9, buttonColor) : "transparent"};
+        isActive ? transparentize(0.8, buttonColor) : "transparent"};
     height: 4rem;
 
     border: 1px solid #d7d7d7;
