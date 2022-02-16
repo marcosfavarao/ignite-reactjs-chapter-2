@@ -5,6 +5,8 @@ import incomeImg from "../../common/assets/svgs/income.svg";
 import outcomeImg from "../../common/assets/svgs/outcome.svg";
 import closeImg from "../../common/assets/svgs/close.svg";
 
+import { api } from "../../services/api";
+
 import {
     Container,
     TransactionTypeContainer,
@@ -29,12 +31,14 @@ export const NewTransactionModal = ({
     const handleCreateNewTransaction = (event: FormEvent) => {
         event.preventDefault();
 
-        console.log({
+        const data = {
             title,
             value,
             category,
             type,
-        });
+        };
+
+        api.post("/transactions", data);
     };
 
     return (
