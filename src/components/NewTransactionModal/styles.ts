@@ -1,5 +1,10 @@
 import styled from "styled-components";
-import { darken } from "polished";
+import { darken, transparentize } from "polished";
+
+interface TransactionTypeButtonProps {
+    isActive: boolean;
+    buttonColor: string;
+}
 
 export const Container = styled.form`
     h2 {
@@ -57,33 +62,34 @@ export const TransactionTypeContainer = styled.div`
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 0.5rem;
+`;
 
-    button {
-        background-color: transparent;
-        height: 4rem;
+export const TransactionTypeButton = styled.button<TransactionTypeButtonProps>`
+    background-color: ${({ isActive, buttonColor }) =>
+        isActive ? transparentize(0.9, buttonColor) : "transparent"};
+    height: 4rem;
 
-        border: 1px solid #d7d7d7;
-        border-radius: 0.25rem;
+    border: 1px solid #d7d7d7;
+    border-radius: 0.25rem;
 
-        display: flex;
-        align-items: center;
-        justify-content: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-        img {
-            width: 20px;
-            height: 20px;
-        }
+    img {
+        width: 20px;
+        height: 20px;
+    }
 
-        span {
-            color: var(--text-title);
-            display: inline-block;
-            margin-left: 1rem;
-            font-size: 1rem;
-        }
+    span {
+        color: var(--text-title);
+        display: inline-block;
+        margin-left: 1rem;
+        font-size: 1rem;
+    }
 
-        transition: border-color 0.25s;
-        &:hover {
-            border-color: ${darken(0.1, "#d7d7d7")};
-        }
+    transition: border-color 0.25s, background-color 0.5s;
+    &:hover {
+        border-color: ${darken(0.1, "#d7d7d7")};
     }
 `;

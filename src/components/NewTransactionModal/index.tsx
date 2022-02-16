@@ -1,10 +1,15 @@
+import { useState } from "react";
 import Modal from "react-modal";
 
 import incomeImg from "../../common/assets/svgs/income.svg";
 import outcomeImg from "../../common/assets/svgs/outcome.svg";
 import closeImg from "../../common/assets/svgs/close.svg";
 
-import { Container, TransactionTypeContainer } from "./styles";
+import {
+    Container,
+    TransactionTypeContainer,
+    TransactionTypeButton,
+} from "./styles";
 
 interface NewTransactionModalProps {
     isModalOpen: boolean;
@@ -16,6 +21,8 @@ export const NewTransactionModal = ({
     isModalOpen,
     onRequestClose,
 }: NewTransactionModalProps) => {
+    const [type, setType] = useState("deposit");
+
     return (
         <Modal
             isOpen={isModalOpen}
@@ -37,15 +44,25 @@ export const NewTransactionModal = ({
                 <input placeholder="Título" />
                 <input type="number" placeholder="Valor" />
                 <TransactionTypeContainer>
-                    <button type="button">
+                    <TransactionTypeButton
+                        type="button"
+                        onClick={() => setType("deposit")}
+                        buttonColor={"#33CC95"}
+                        isActive={type === "deposit"}
+                    >
                         <img src={incomeImg} alt="Entrada" />
                         <span>Entrada</span>
-                    </button>
+                    </TransactionTypeButton>
 
-                    <button type="button">
+                    <TransactionTypeButton
+                        type="button"
+                        onClick={() => setType("withdraw")}
+                        buttonColor={"#E52E4D"}
+                        isActive={type === "withdraw"}
+                    >
                         <img src={outcomeImg} alt="Saída" />
                         <span>Saída</span>
-                    </button>
+                    </TransactionTypeButton>
                 </TransactionTypeContainer>
                 <input placeholder="Categoria" />
 
